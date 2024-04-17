@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class move : MonoBehaviour
 {
+    public float jumpHeight = 7f;
+    public bool isGrounded;
     private Rigidbody rb;
 
     void Start()
