@@ -17,7 +17,7 @@ public class move : MonoBehaviour
     {
     if (isGrounded) {
         if (Input.GetButtonDown("Jump"))
-            rb.AddForce(Vector3.up * jumpHeight)
+            rb.AddForce(Vector3.up * jumpHeight);
     }
     if (Input.GetKey(KeyCode.A))
         transform.Translate(-0.1f, 0f, 0f);
