@@ -348,7 +348,9 @@
 -analyzer:"/home/nolfews/Unity/Hub/Editor/2022.3.23f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.Properties.SourceGenerator.dll"
 -analyzer:"/home/nolfews/Unity/Hub/Editor/2022.3.23f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.SourceGenerators.dll"
 "Assets/Scripts/cam_move.cs"
-"Assets/Scripts/move.cs"
+"Assets/Scripts/collectible.cs"
+"Assets/Scripts/end.cs"
+"Assets/Scripts/player.cs"
 "Assets/Scripts/shoot.cs"
 -langversion:9.0
 

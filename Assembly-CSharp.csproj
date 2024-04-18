@@ -64,9 +64,11 @@
     <Analyzer Include="/home/nolfews/Unity/Hub/Editor/2022.3.23f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets/Scripts/collectible.cs" />
     <Compile Include="Assets/Scripts/cam_move.cs" />
-    <Compile Include="Assets/Scripts/move.cs" />
+    <Compile Include="Assets/Scripts/player.cs" />
     <Compile Include="Assets/Scripts/shoot.cs" />
+    <Compile Include="Assets/Scripts/end.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
