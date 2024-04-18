@@ -15,7 +15,7 @@ public class player : MonoBehaviour
     public Camera cameraEnd;
     public GameObject handjav;
 
-    public int jav_size = 1;
+    public float jav_size = 0.1f;
 
     void Start()
     {
@@ -23,8 +23,12 @@ public class player : MonoBehaviour
     }
     void Update()
     {
-        if (finish == false)
-            transform.Translate(-10f * Time.deltaTime, 0f, 0f);
+        if (finish == false) {
+            if (Input.GetKey(KeyCode.Space))
+                transform.Translate(-20f * Time.deltaTime, 0f, 0f);
+            else
+                transform.Translate(-10f * Time.deltaTime, 0f, 0f);
+        }
         if ((Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A)) && transform.position.z > -4)
             transform.Translate(0f, 0f, -25f * Time.deltaTime);
         if ((Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D)) && transform.position.z < 4)
@@ -33,7 +37,7 @@ public class player : MonoBehaviour
         if (finish == true && shoot == false) {
             Rigidbody instantiatedProjectile = Instantiate(javelot, transform.position, transform.rotation) as Rigidbody;
             instantiatedProjectile.velocity = transform.TransformDirection(new Vector3(-throwspeed, 15, 0));
-            instantiatedProjectile.transform.Rotate(90, 0, 0);
+            instantiatedProjectile.transform.Rotate(0, 0, 60);
             instantiatedProjectile.transform.localScale = new Vector3(0.2f, 1 * jav_size, 0.2f);
             instantiatedProjectile.transform.position = new Vector3(-245, 8, 0);
             shoot = true;
@@ -41,7 +45,9 @@ public class player : MonoBehaviour
             cameraGame.enabled = false;
             Destroy(handjav);
         }
-        if (finish == false)
-            handjav.transform.localScale = new Vector3(0.1f, 1 * jav_size, 0.1f);
+        if (finish == false) {
+            handjav.transform.localScale = new Vector3(0.1f, 1 + jav_size, 0.1f);
+            throwspeed = 10 + (jav_size / 10);
+        }
     }
 }
