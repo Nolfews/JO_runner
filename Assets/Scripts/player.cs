@@ -10,9 +10,11 @@ public class player : MonoBehaviour
     public float throwspeed = 10;
     public bool finish = false;
     private bool shoot = false;
+    private float time_since_finish = 0;
 
     public Camera cameraGame;
     public Camera cameraEnd;
+    public Camera javcam;
     public GameObject handjav;
 
     public float jav_size = 0.1f;
@@ -38,7 +40,7 @@ public class player : MonoBehaviour
 
         if (finish == true && shoot == false) {
             instantiatedProjectile = Instantiate(javelot, transform.position, transform.rotation) as Rigidbody;
-            instantiatedProjectile.velocity = transform.TransformDirection(new Vector3(-throwspeed, 15, 0));
+            instantiatedProjectile.velocity = transform.TransformDirection(new Vector3(-(throwspeed * 3), 15, 0));
             instantiatedProjectile.transform.Rotate(0, 0, 60);
             instantiatedProjectile.transform.localScale = new Vector3(0.2f, 1 * jav_size, 0.2f);
             instantiatedProjectile.transform.position = new Vector3(-245, 8, 0);
@@ -50,6 +52,15 @@ public class player : MonoBehaviour
         if (finish == false) {
             handjav.transform.localScale = new Vector3(0.1f, 1 + jav_size, 0.1f);
             throwspeed = 10 + (jav_size / 10);
+        }
+        if (finish == true) {
+            time_since_finish += Time.deltaTime;
+            if (time_since_finish > 2.0f) {
+                cameraEnd.enabled = false;
+                javcam.enabled = true;
+                Vector3 temp = instantiatedProjectile.transform.position;
+                javcam.transform.position = new Vector3(temp.x + 25, temp.y - 10, temp.z);
+            }
         }
     }
 }
