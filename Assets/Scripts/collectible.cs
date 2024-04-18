@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class collectible : MonoBehaviour
 {
+    public AudioSource sound;
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player") {
             player Player = FindObjectOfType<player>();
             Player.jav_size += 1;
             Destroy(gameObject);
+            sound.Play(0);
         }
     }
 
