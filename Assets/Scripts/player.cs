@@ -17,6 +17,8 @@ public class player : MonoBehaviour
 
     public float jav_size = 0.1f;
 
+    public Rigidbody instantiatedProjectile;
+
     void Start()
     {
         cameraEnd.enabled = false;
@@ -35,7 +37,7 @@ public class player : MonoBehaviour
             transform.Translate(0f, 0f, 25f * Time.deltaTime);
 
         if (finish == true && shoot == false) {
-            Rigidbody instantiatedProjectile = Instantiate(javelot, transform.position, transform.rotation) as Rigidbody;
+            instantiatedProjectile = Instantiate(javelot, transform.position, transform.rotation) as Rigidbody;
             instantiatedProjectile.velocity = transform.TransformDirection(new Vector3(-throwspeed, 15, 0));
             instantiatedProjectile.transform.Rotate(0, 0, 60);
             instantiatedProjectile.transform.localScale = new Vector3(0.2f, 1 * jav_size, 0.2f);
