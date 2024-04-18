@@ -7,12 +7,15 @@ using UnityEngine.UI;
 public class player : MonoBehaviour
 {
     public Rigidbody javelot;
-    public float speed = 75;
+    public float throwspeed = 10;
     public bool finish = false;
     private bool shoot = false;
 
     public Camera cameraGame;
     public Camera cameraEnd;
+    public GameObject handjav;
+
+    public int jav_size = 1;
 
     void Start()
     {
@@ -29,11 +32,16 @@ public class player : MonoBehaviour
 
         if (finish == true && shoot == false) {
             Rigidbody instantiatedProjectile = Instantiate(javelot, transform.position, transform.rotation) as Rigidbody;
-            instantiatedProjectile.velocity = transform.TransformDirection(new Vector3(-speed, 30, 0));
+            instantiatedProjectile.velocity = transform.TransformDirection(new Vector3(-throwspeed, 15, 0));
             instantiatedProjectile.transform.Rotate(90, 0, 0);
+            instantiatedProjectile.transform.localScale = new Vector3(0.2f, 1 * jav_size, 0.2f);
+            instantiatedProjectile.transform.position = new Vector3(-245, 8, 0);
             shoot = true;
             cameraEnd.enabled = true;
             cameraGame.enabled = false;
+            Destroy(handjav);
         }
+        if (finish == false)
+            handjav.transform.localScale = new Vector3(0.1f, 1 * jav_size, 0.1f);
     }
 }
