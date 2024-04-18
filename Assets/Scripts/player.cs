@@ -59,8 +59,14 @@ public class player : MonoBehaviour
                 cameraEnd.enabled = false;
                 javcam.enabled = true;
                 Vector3 temp = instantiatedProjectile.transform.position;
-                javcam.transform.position = new Vector3(temp.x + 25, temp.y - 10, temp.z);
+                javcam.transform.position = new Vector3(temp.x + 25, temp.y + 10, temp.z);
             }
+            if (time_since_finish > 1.0f)
+                instantiatedProjectile.transform.rotation = new Quaternion(180f, -120f, 0f, 0f);
+            if (time_since_finish > 1.5f)
+                instantiatedProjectile.transform.rotation = new Quaternion(180f, -75f, 0f, 0f);
+            if (time_since_finish > 2.0f)
+                instantiatedProjectile.transform.rotation = new Quaternion(180f, -30f, 0f, 0f);
         }
     }
 }
